@@ -1,39 +1,25 @@
-#ingrese 3 datos numericos diferentes  y reconozca cual de los tres mayor
-
+print('*NUMERO MAYOR NUMERO MENOR*')
 print('Ingresa 3 numeros diferentes?')
-num1=(int(input("ingrese el primer numero")))
-num2=(int(input("ingrese el segundo numero")))
-num3=(int(input("ingrese el tercer numero numero")))
+num1 = int(input("Ingrese el primer numero: "))
+num2 = int(input("Ingrese el segundo numero: "))
+num3 = int(input("Ingrese el tercer numero: "))
 
-#numero mayor
-if num1 > num2 and num1 > num3:
-    mayor = num1
-elif num2 > num1 and num2 > num3:
-    mayor = num2
-elif num3 > num1 and num3 > num2:
-    mayor = num3
-else:
-    mayor = None
+mayor = max(num1, num2, num3)
+menor = min(num1, num2, num3)
  
-#numero menor
-if num1 < num2 and num1 < num3:
-    menor = num1
-elif num2 < num1 and num2 < num3:
-    menor = num2
-elif num3 < num1 and num3 < num2:
-    menor = num3
-else:
-    menor = None
-#mostrar resultados
+# Mostrar resultados
 if mayor is not None:
-    print(f"el numero mayor es: {mayor}")
+    print(f"El numero mayor es: {mayor}")
 else:
-    print("hay un empate entre los numeros mayores.")
+    print("Hay un empate entre los numeros mayores.")
     
 if menor is not None:
-  print(f"el numero menor es: {menor}")
+    print(f"El numero menor es: {menor}")
 else:
-    print("hay un empate entre los numeros menores.")    
-
-
-
+    print("Hay un empate entre los numeros menores.")   
+    
+while True:
+    repetir = input("¿Desea realizar otra operación? (1-para SI, 2-para NO): ")
+    if repetir == "2":
+        print("Hasta pronto")
+        break

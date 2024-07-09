@@ -13,21 +13,20 @@ while True:
         print("*Promedio de calificaciones*")
         cantNotas =(input("numero de calificaciones que desea ingresar"))
         
-        
         if not cantNotas.isdigit():# Verificar que la entrada sea numérica
             print("Debe ingresar un número válido para la cantidad de calificaciones.")
             continue
-        
-        cantNotas = int(cantNotas)  # Convertir a entero después de la verificación
+     
         print("Digite 1 a 1 las notas que va a ingresar usando decimales con (.) y no con (,).")
         print("Las notas deben estar entre un rango de 0 a 100.")
         
+        cantNotas=int(cantNotas)
         notas = []
                 
-        for i in range(cantNotas):
+        for i in range(1, cantNotas + 1):
             while True:
                 try:
-                    nota = int(input(f"Ingrese la nota {i+1}: "))
+                    nota = int(input(f"Ingrese la nota {i}: "))
                     if 0 <= nota <= 100:
                         notas.append(nota) #aqui añadimos la nota si esta en el rango
                         break
