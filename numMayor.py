@@ -6,7 +6,8 @@ num3 = int(input("Ingrese el tercer numero: "))
 
 mayor = max(num1, num2, num3)
 menor = min(num1, num2, num3)
- 
+
+
 # Mostrar resultados
 if mayor is not None:
     print(f"El numero mayor es: {mayor}")

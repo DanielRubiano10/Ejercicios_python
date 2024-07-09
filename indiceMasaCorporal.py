@@ -4,7 +4,7 @@
 #print(x)
  
 #programa que mide si debe aumentar su cantidad de ejercicio diario. 
-def indiceMasaCorporal(nombre, peso, altura):
+def indiceMasaCorporal(peso, altura):
     imc = peso / (altura **2)
     return imc
 
@@ -15,7 +15,7 @@ for _ in range(numUsuarios):
     peso= float(input("ingrese su peso en kg: "))
     altura= float(input("ingrese su altura en cm: ")) / 100 #convierte altura de cm a m    '
 
-    imc= indiceMasaCorporal(nombre, peso, altura) 
+    imc= indiceMasaCorporal(peso, altura) 
     print(f"{nombre}, su indice de masa corporal es: {imc:.1f}")
 
     if 0 <= imc <= 18.5:
