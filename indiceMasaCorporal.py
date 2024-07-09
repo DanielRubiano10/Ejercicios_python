@@ -8,6 +8,8 @@ def indiceMasaCorporal(peso, altura):
     imc = peso / (altura **2)
     return imc
 
+
+
 numUsuarios=int (input("Ingrese el numero de usuarios: "))
 for _ in range(numUsuarios):
     nombre= (input("ingrese su nombre!: "))
