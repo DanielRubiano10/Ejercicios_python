@@ -8,23 +8,24 @@ def indiceMasaCorporal(peso, altura):
     imc = peso / (altura **2)
     return imc
 
-
+#imc = peso / (altura **2)
+#18.5(1.68 **2) = peso
 
 numUsuarios=int (input("Ingrese el numero de usuarios: "))
 for _ in range(numUsuarios):
     nombre= (input("ingrese su nombre!: "))
     edad= int(input("ingrese su edad!: "))
-    peso= float(input("ingrese su peso en kg: "))
+    pero= float(input("ingrese su peso en kg: "))
     altura= float(input("ingrese su altura en cm: ")) / 100 #convierte altura de cm a m    '
 
-    imc= indiceMasaCorporal(peso, altura) 
+    imc= indiceMasaCorporal(pero, altura) 
     print(f"{nombre}, su indice de masa corporal es: {imc:.1f}")
 
     if 0 <= imc <= 18.5:
         print('esta muy delgado debe mejorar su alimentacion pronto y entrenar 2 veces por semana.! ') 
-    elif 18.5 <= imc <= 24.9:
+    elif 18.6 <= imc <= 24.9:
         print('tiene un peso promedio si lo quisiera podria aumentar alguna practica deportiva de su gusto y mejoraria un poco mas. ')
-    elif 25.9 <= imc <= 29.9:
+    elif 25.0 <= imc <= 29.9:
         print('tiene buena masa corporal no olvidar la resistencia cardiovascular para cuidar el corazon. ')
     elif imc > 29.9:
         print ('pronto debes empezar a realizar ejercicio si quiere cuidar su vida y su salud para el futuro. ')       
