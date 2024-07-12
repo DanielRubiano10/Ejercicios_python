@@ -15,10 +15,10 @@ numUsuarios=int (input("Ingrese el numero de usuarios: "))
 for _ in range(numUsuarios):
     nombre= (input("ingrese su nombre!: "))
     edad= int(input("ingrese su edad!: "))
-    pero= float(input("ingrese su peso en kg: "))
+    peso= float(input("ingrese su peso en kg: "))
     altura= float(input("ingrese su altura en cm: ")) / 100 #convierte altura de cm a m    '
 
-    imc= indiceMasaCorporal(pero, altura) 
+    imc= indiceMasaCorporal(peso, altura) 
     print(f"{nombre}, su indice de masa corporal es: {imc:.1f}")
 
     if 0 <= imc <= 18.5:
