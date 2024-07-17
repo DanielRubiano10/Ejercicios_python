@@ -1,30 +1,22 @@
-#listas por comprension: es hacer una lista que internamente se opere para dar un resultado a la lista
-"""numeros = [x * 2 for x in range(1, 6)]
-print(numeros)
+#programa para controlar el inventario de una empresa(diccionario[])
+inventario={}
 
-#lista por extension
-numeros= []
-for x in range (1,6):
-    numeros.append(x*2)
-print(numeros)
+inventario["best protein"] = {"cantidad": 10, "precio":150.000}
+inventario["megaplex"] = {"cantidad":2, "precio":110.000}
+inventario["intenze"] = {"cantidad":1, "precio": 100.000}
 
-#OPERADOR TERNARIO:
-#lloviendo= False
-#acessorio= "paraguas" if lloviendo else "gafas de sol "
-#print(acessorio)
+print("inventario inicial:")
+print(inventario)
 
-import pandas as pd
-def sumarDos(x):
- return x+2
+cantidad_Intenze= inventario["intenze"]["cantidad"]
+print(f"cantidad de intenze {cantidad_Intenze}")
 
-datos=pd.DataFrame({"numeros":[1,2,3,4,5,6,7,8,9,5,2,1,21,55,12,]})
-datos ["numeros_mas_dos"] = datos["numeros"].apply(sumarDos)
-print(datos)"""""
-
-import math
-print(math.sqrt(16))
+inventario ["intenze"]["cantidad"]= 10
+print('cantidad de intenze "actualizada: "')
+print(inventario["intenze"]["cantidad"])
 
 
-
-
-
+# Iterar a través de los productos en el inventario
+print("\nInventario completo:")
+for producto, detalles in inventario.items():
+    print(f"Producto: {producto}, Cantidad: {detalles['cantidad']}, Precio: ${detalles['precio']}")
