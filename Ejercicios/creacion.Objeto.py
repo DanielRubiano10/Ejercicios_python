@@ -1,4 +1,4 @@
-import Persona
+import Ejercicios.Persona as Persona
 
 #getters setters
 class Profesor(Persona):
