@@ -1,14 +1,13 @@
-#ejemplo de conexion a una base de datos 
+# conexion.py
 import mysql.connector
 
-# Establecemos la conexión
 class Conexion:
-    def __init__(self, db, user="root", password="root", host="localhost", database="tareas_db", port="3306"):
+    def __init__(self, db, user="root", password=None, host="localhost", port=3306):
         self.db = db
-        self.host = host
-        self.port = port
         self.user = user
         self.password = password
+        self.host = host
+        self.port = port
         
     def getConexion(self):
         config = {
@@ -25,19 +24,24 @@ class Conexion:
         except mysql.connector.Error as err:
             print(f"Error de conexion: {err}")
             return None
-Conexion_db = Conexion(db="tareas_db")#crear una instancia de la clase conexion
-Conexion = Conexion_db.getConexion()#obtener la conexion    
 
-if Conexion:
-    cursor= Conexion.cursor()
-    cursor.execute("SHOW TABLES")
-    tablas= cursor.fetchall()
-    print("tablas en la base de datos: ")
-    for tabla in tablas:
-        print(tabla)
+    def cerrar(self, conexion):
+        if conexion:
+            conexion.close()
+            print('Conexion cerrada.')
+
+# Prueba de conexión
+if __name__ == "__main__":
+    Conexion_db = Conexion(db="tareas_db", user="root", password="tu_contraseña")
+    Conexion = Conexion_db.getConexion()
+    if Conexion:
+        cursor = Conexion.cursor()
+        cursor.execute("SHOW TABLES")
+        tablas = cursor.fetchall()
+        print("Tablas en la base de datos:")
+        for tabla in tablas:
+            print(tabla)
         cursor.close()
-        Conexion.close()
-else:
-    print("No se pudo conectar a la base de datos ")
-    
-    
+        Conexion_db.cerrar(Conexion)
+    else:
+        print("No se pudo conectar a la base de datos")
