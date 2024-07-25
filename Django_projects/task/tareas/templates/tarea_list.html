@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Tareas</title>
+</head>
+<body>
+    <h1>Lista de Tareas</h1>
+    <ul>
+        {% for tarea in tareas %}
+            <li>{{ tarea.descripcion }} - <a href="{% url 'tarea-detail' tarea.pk %}">Ver</a> - <a href="{% url 'tarea-update' tarea.pk %}">Editar</a> - <a href="{% url 'tarea-delete' tarea.pk %}">Eliminar</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'tarea-create' %}">Nueva Tarea</a>
+</body>
+</html>
