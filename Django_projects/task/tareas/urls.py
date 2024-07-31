@@ -1,10 +1,12 @@
-from django.urls import path
-from .views import seleccionarTareas, crearTareas, vistaDetalladaTareas, actualizarTareas, EliminarTarea
+from django.contrib import admin
+from django.urls import path, include
+from tareas import views  
 
 urlpatterns = [
-    path('', seleccionarTareas.as_view(), name='tarea-list'),
-    path('new/', crearTareas.as_view(), name='tarea-create'),
-    path('<int:pk>/', vistaDetalladaTareas.as_view(), name='tarea-detail'),
-    path('<int:pk>/edit/', actualizarTareas.as_view(), name='tarea-update'),
-    path('<int:pk>/delete/', EliminarTarea.as_view(), name='tarea-delete'),
+    path('', views.inicio, name='inicio'),  
+    path('tarea_list', views.tarea_list, name='tarea-list'),
+    path('new/', views.tarea_create, name='tarea-create'),
+    path('<int:pk>/', views.tarea_detail, name='tarea-detail'),
+    path('<int:pk>/edit/', views.tarea_update, name='tarea-update'),
+    path('<int:pk>/delete/', views.tarea_delete, name='tarea-delete'),
 ]
