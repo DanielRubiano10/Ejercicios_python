@@ -6,10 +6,10 @@
 <body>
     <h1>Lista de Tareas</h1>
     <ul>
-        {%for tarea in tareas%}
-            <li>{{tarea.descripcion}} - <a href="{% url "tarea-Detallada" tarea.pk %}"> Ver </a> - <a href="{%url "tarea-update" tarea.pk%}"> Editar </a> - <a href="{% url "tarea-delete" tarea.pk%}">Eliminar</a></li>
+        {% for tarea in tareas %}
+            <li>{{ tarea.descripcion }} </li>
         {% endfor %}
     </ul>
-    <a href="{% url "tarea-create"%}">Nueva Tareas</a>
+    <a href="{% url 'tarea-create' %}">Crear Nueva Tarea</a>
 </body>   
 </html>

@@ -4,13 +4,13 @@
     <title>Detalles de Tarea</title>
 </head>
 <body> 
-    <h1>Destalles de Tarea</h1>
-    <p>{{tarea.descripcion}}</p>
-    <a href="{% url "tarea-update" tarea.pk %}">Editar</a>
-    <form method="post" action="{% url"tarea-delete" tarea.pk%}">
+    <h1>Detalles de Tarea</h1>
+    <p>{{ tarea.descripcion }}</p>
+    <a href="{% url 'tarea-update' tarea.pk %}">Editar</a>
+    <form method="post" action="{% url 'tarea-delete' tarea.pk %}">
         {% csrf_token %}
         <button type="submit">Eliminar</button>
     </form>
-    <a href="{% url "tarea-list" %}">Volver a la lista</a>
+    <a href="{% url 'tarea-list' %}">Volver a la lista</a>
 </body>   
 </html>
