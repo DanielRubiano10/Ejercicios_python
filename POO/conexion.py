@@ -1,47 +1,40 @@
 # conexion.py
 import mysql.connector
+from mysql.connector import Error
 
 class Conexion:
-    def __init__(self, db, user="root", password=None, host="localhost", port=3306):
+    def __init__(self, db, user, password='', host='localhost', port='3306'):
         self.db = db
         self.user = user
         self.password = password
         self.host = host
         self.port = port
-        
-    def getConexion(self):
-        config = {
-            "user": self.user,
-            "password": self.password,
-            "host": self.host,
-            "port": self.port,
-            "database": self.db
-        }
+        self.conn = None
+    
+    def conectar(self):
         try:
-            conexion = mysql.connector.connect(**config)
-            print("Conexion exitosa a la base de datos")
-            return conexion
-        except mysql.connector.Error as err:
-            print(f"Error de conexion: {err}")
+            self.conn = mysql.connector.connect(
+                user=self.user,
+                password=self.password,
+                host=self.host,
+                database=self.db,
+                port=self.port
+            )
+            if self.conn.is_connected():
+                print("Conexión exitosa a la base de datos")
+            return self.conn
+        except Error as e:
+            print(f"Error al conectar a la base de datos: {e}")
             return None
+    
+    def cerrar(self):
+        if self.conn and self.conn.is_connected():
+            self.conn.close()
+            print("Conexión cerrada exitosamente")
 
-    def cerrar(self, conexion):
-        if conexion:
-            conexion.close()
-            print('Conexion cerrada.')
-
-# Prueba de conexión
+# Ejemplo de uso
 if __name__ == "__main__":
-    Conexion_db = Conexion(db="tareas_db", user="root", password="tu_contraseña")
-    Conexion = Conexion_db.getConexion()
-    if Conexion:
-        cursor = Conexion.cursor()
-        cursor.execute("SHOW TABLES")
-        tablas = cursor.fetchall()
-        print("Tablas en la base de datos:")
-        for tabla in tablas:
-            print(tabla)
-        cursor.close()
-        Conexion_db.cerrar(Conexion)
-    else:
-        print("No se pudo conectar a la base de datos")
+    conexion = Conexion(db='tareas_db', user='root', password='')
+    conn = conexion.conectar()
+    if conn:
+        conexion.cerrar()
