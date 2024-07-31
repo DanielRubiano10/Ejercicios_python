@@ -1,3 +1,9 @@
+
+
+INSTALLED_APPS = [
+    'tareas',
+]
+import os
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -13,7 +19,6 @@ TEMPLATES = [
         },
     },
 ]
-
 DATABASES= {
     "default":{
         'ENGINE': "django.db.backends.mysql",

@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Detalles de Tarea</title>
-</head>
-<body> 
-    <h1>Destalles de Tarea</h1>
-    <p>{{tarea.descripcion}}</p>
-    <a href="{% url "tarea-update" tarea.pk %}">Editar</a>
-    <form method="post" action="{% url"tarea-delete" tarea.pk%}">
-        {% csrf_token %}
-        <button type="submit">Eliminar</button>
-    </form>
-    <a href="{% url "tarea-list" %}">Volver a la lista</a>
-</body>   
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Detalle de Tarea{% endblock %}
+
+{% block content %}
+    <h2>Detalle de Tarea</h2>
+    <p>{{ tarea.descripcion }}</p>
+    <a href="{% url 'tarea-update' tarea.pk %}" class="btn btn-warning">Editar</a>
+    <a href="{% url 'tarea-delete' tarea.pk %}" class="btn btn-danger">Eliminar</a>
+    <a href="{% url 'tarea-list' %}" class="btn btn-secondary">Volver a la lista</a>
+{% endblock %}

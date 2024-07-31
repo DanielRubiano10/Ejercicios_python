@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Formulario de Tareas</title>
-</head>
-<body>
-    <h1>{{form.instance.pk|yesno:"Editar Tarea,Nueva Tarea" }}</h1>
+{% extends 'base.html' %}
+
+{% block title %}Crear/Editar Tarea{% endblock %}
+
+{% block content %}
+    <h2>{% if form.instance.pk %}Editar{% else %}Crear{% endif %} Tarea</h2>
     <form method="post">
         {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit"> Guardar</button>
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
-</body>   
-</html>
+{% endblock %}
