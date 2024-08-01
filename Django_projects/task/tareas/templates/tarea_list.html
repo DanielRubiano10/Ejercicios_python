@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'my_app/base.html' %}
 
 {% block title %}Lista de Tareas{% endblock %}
 
@@ -6,7 +6,8 @@
     <h2>Lista de Tareas</h2>
     <ul>
         {% for tarea in tareas %}
-            <li><a href="{% url 'tarea-detail' tarea.pk %}">{{ tarea.nombre }}</a></li>
+            <li>{{ tarea.descripcion }}</li>
         {% endfor %}
     </ul>
+    <a href="{% url 'tarea-create' %}">Nueva Tarea</a>
 {% endblock %}
