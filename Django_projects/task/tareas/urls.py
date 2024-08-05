@@ -1,12 +1,14 @@
 from django.contrib import admin
 from django.urls import path, include
+from . import views
 from tareas import views  
+from . import views
 
 urlpatterns = [
-    path('', views.inicio, name='inicio'),  
-    path('tarea_list', views.tarea_list, name='tarea-list'),
-    path('new/', views.tarea_create, name='tarea-create'),
-    path('<int:pk>/', views.tarea_detail, name='tarea-detail'),
-    path('<int:pk>/edit/', views.tarea_update, name='tarea-update'),
-    path('<int:pk>/delete/', views.tarea_delete, name='tarea-delete'),
+    path('', views.inicio, name='inicio'),
+    path('tarea-list', views.tarea_list, name='tarea-list'),
+    path('lisTareas', views.lisTareas, name='lisTareas'),
+    path('CrearTarea', views.CrearTarea, name='CrearTarea'),
+    
+    
 ]
