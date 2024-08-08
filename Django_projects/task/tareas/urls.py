@@ -1,11 +1,11 @@
-from django.urls import path
+from django.contrib import admin
+from django.urls import path, include
 from . import views
 
 urlpatterns = [
     path('', views.inicio, name='inicio'),
-    path('tareas/', views.tarea_list, name='tarea-list'),
-    path('tareas/<int:pk>/', views.tarea_detail, name='tarea-detail'),
-    path('tareas/nueva/', views.tarea_create, name='tarea-create'),
-    path('tareas/<int:pk>/editar/', views.tarea_update, name='tarea-update'),
-    path('tareas/<int:pk>/eliminar/', views.tarea_delete, name='tarea-delete'),
-]
+    path('nosotros', views.nosotros, name='nosotros'),
+    path('CRUD', views.CRUD, name='CRUD'),
+    path('CRUD/crear', views.crear, name='crear'),
+    path('CRUD/Editar', views.editar, name='editar'),
+  ]
