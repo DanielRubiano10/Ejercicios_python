@@ -1,10 +1,15 @@
-{% extends "base.html" %} {% block titulo %} Lista de Tareas {% endblock %} {%
-block contenido %}
+{% extends "base.html" %}
+
+{% block titulo %}
+    Lista de Tareas
+{% endblock %}
+
+{% block contenido %}
 <div class="card">
   <div class="card-header">
-    <a class="btn btn-success" href="{% url 'crear' %}" role="button"
-      >Agregar nueva tarea</a
-    >
+    <a class="btn btn-success" href="{% url 'crear' %}" role="button">
+      Agregar nueva tarea
+    </a>
   </div>
   <div class="card-body">
     <h4 class="card-title">Tareas</h4>
@@ -13,37 +18,32 @@ block contenido %}
         <thead>
           <tr>
             <th>ID</th>
-            <th>Titulo</th>
-            <th>Descripcion</th>
+            <th>Título</th>
+            <th>Descripción</th>
             <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
-          {% for tarea in CRUD %}
+          {% for tarea in tareas %}
           <tr>
             <td>{{ tarea.id }}</td>
             <td>{{ tarea.titulo }}</td>
             <td>{{ tarea.descripcion }}</td>
             <td>
-              <a
-                class="btn btn-info"
-                href="{% url 'editar' tarea.id %}"
-                role="button"
-                >Editar</a
-              >
-              <a
-                class="btn btn-danger"
-                href="{% url 'borrar' tarea.id %}"
-                role="button"
-                >Borrar</a
-              >
+              <a class="btn btn-info" href="{% url 'editar' tarea.id %}" role="button">
+                Editar
+              </a>
+              <a class="btn btn-danger" href="{% url 'borrar' tarea.id %}" role="button">
+                Borrar
+              </a>
             </td>
           </tr>
           {% endfor %}
+          {% if not tareas %}
           <tr>
             <td colspan="4">No hay tareas disponibles.</td>
           </tr>
-          {% endfor %}
+          {% endif %}
         </tbody>
       </table>
     </div>

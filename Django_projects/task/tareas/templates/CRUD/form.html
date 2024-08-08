@@ -1,4 +1,6 @@
 <form enctype="multipart/form-data" method="post">
+  {% csrf_token %} {% for campo in formulario %}
+
   <div class="mb-3">
     <label for="" class="form-label">Nombre:</label>
     <input
@@ -10,4 +12,5 @@
       placeholder="Nombre"
     />
   </div>
+  {% endfor %}
 </form>
