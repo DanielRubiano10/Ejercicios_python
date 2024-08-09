@@ -24,6 +24,7 @@
           </tr>
         </thead>
         <tbody>
+
           {% for tarea in tareas %}
           <tr>
             <td>{{ tarea.id }}</td>
@@ -39,11 +40,13 @@
             </td>
           </tr>
           {% endfor %}
+          
           {% if not tareas %}
           <tr>
             <td colspan="4">No hay tareas disponibles.</td>
           </tr>
           {% endif %}
+
         </tbody>
       </table>
     </div>

@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Tarea
 from .forms import TareaForm
+
 
 def inicio(request):
     return render(request, 'pag/inicio.html')
@@ -15,6 +16,9 @@ def CRUD(request):
 
 def crear(request):
     formulario= TareaForm(request.POST or None)
+    if formulario.is_valid():
+        formulario.save()
+        return redirect('crear')
     return render(request,'CRUD/crear.html', {'formulario' : formulario})
 
 def editar(request):
