@@ -11,19 +11,28 @@ def nosotros (request):
 
 
 def CRUD(request):
-    CRUD = Tarea.objects.all()
-    return render(request, 'CRUD/index.html', {'CRUD' : CRUD})
+    tareas = Tarea.objects.all()
+    return render(request, 'CRUD/index.html', {'tareas' : tareas})
 
 def crear(request):
     formulario= TareaForm(request.POST or None)
     if formulario.is_valid():
         formulario.save()
-        return redirect('crear')
+        return redirect('CRUD')
     return render(request,'CRUD/crear.html', {'formulario' : formulario})
 
-def editar(request):
-    return render(request, 'CRUD/editar.html')
+def editar(request, id   ):
+    tarea = Tarea.objects.get(id=id)
+    formulario = TareaForm(request.POST or None, request.FILES or None, instance=tarea)
+    if formulario.is_valid() and request.POST: 
+        formulario.save()
+        return redirect('CRUD')
+    return render(request, 'CRUD/editar.html', {'formulario': formulario})
 
+def eliminar(request,id):
+    tarea = Tarea.objects.get(id=id)
+    tarea.delete()
+    return redirect('CRUD') 
 
 
 
