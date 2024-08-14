@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Tarea
-from .forms import TareaForm
+from .forms import TareaForm, UsuarioForm
 
 
 def inicio(request):
@@ -34,6 +34,16 @@ def eliminar(request,id):
     tarea.delete()
     return redirect('CRUD') 
 
+def registrar_usuario(request):
+    if request.method == 'POST':
+        form = UsuarioForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('nombre_de_la_vista_a_redirigir')
+    else:
+        form = UsuarioForm()  # Aquí se asegura que form esté definido
+
+    return render(request, 'CRUD/registrar_usuario.html', {'form': form})
 
 
 

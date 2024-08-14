@@ -3,8 +3,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 INSTALLED_APPS = [
     'tareas',
+    'rest_framework',
+    'rest_framework_swagger',
+    'drf_yasg',
 ]
-import os
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -21,14 +24,16 @@ TEMPLATES = [
     },
 ]
 
-DATABASES= {
-    "default":{
+DATABASES = {
+    "default": {
         'ENGINE': "django.db.backends.mysql",
         'NAME': "tareas_db",
         'USER': "root",
         'PASSWORD': "",
         'HOST': "localhost",
-        'PORT': "3306"
-    
+        'PORT': "3306",
+        'OPTIONS': {
+            'sql_mode': 'STRICT_TRANS_TABLES,STRICT_ALL_TABLES',
+        },
     }
 }
