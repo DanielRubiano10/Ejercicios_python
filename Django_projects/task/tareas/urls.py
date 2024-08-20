@@ -1,13 +1,14 @@
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 from . import views
+from .views import Perfil
+
 
 urlpatterns = [
-    path('', views.inicio, name='inicio'),
-    path('nosotros/', views.nosotros, name='nosotros'),
-    path('CRUD/', views.CRUD, name='CRUD'),
-    path('CRUD/crear/', views.crear, name='crear'),
-    path('CRUD/editar/<int:id>/', views.editar, name='editar'),
-    path('eliminar/<int:id>/', views.eliminar, name='eliminar'),
-    path('registrar/', views.registrar_usuario, name='registrar_usuario'),
-  ]
+  
+path('login/', views.Login.as_view(), name='login'),
+path('panel', views.Panel.as_view(), name='panel'),
+path('salir', views.Salir.as_view(), name='salir'),
+path('perfil/<str:modo>/<int:p>', views.Perfil.as_view(), name='perfil'),
+path('eliminar/<str:modo>/<int:p>', views.Eliminar.as_view(), name='eliminar'),
+path('perfil/<str:modo>/<int:p>', views.Perfil.as_view(), name='perfil'),
+]
